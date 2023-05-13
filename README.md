@@ -9,7 +9,7 @@ Blynk Asset Tracking Blueprint for tracking assets with [Blynk](https://blynk.io
 - [Particle Boron](https://docs.particle.io/boron/)
 - [GPS FeatherWing](https://www.adafruit.com/product/3133)
 ## Software
-In order to minimize cellular communication between Blynk and the device, the [Blynk HTTPs API[(https://docs.blynk.io/en/blynk.cloud/https-api-overview) will be used.  The Particle Boron cellular IoT device will publish a JSON string to the Particle Cloud, referencing a Particle webhook. The webhook reformats the data, and then sends it to the Blynk Cloud via an HTTP GET, updating the Blynk datastreams.  
+In order to minimize cellular communication between Blynk and the device, the [Blynk HTTPs API](https://docs.blynk.io/en/blynk.cloud/https-api-overview) will be used.  The Particle Boron cellular IoT device will publish a JSON string to the Particle Cloud, referencing a Particle webhook. The webhook reformats the data, and then sends it to the Blynk Cloud via an HTTP GET, updating the Blynk datastreams.  
 
 Begin by using the 'Blynk Aasset Tracking' Blueprint by navigating in the Blynk.Console to 'Templates -> BLUEPRINTS -> BLUEPRINT -> Use Blueprint'.  
 
