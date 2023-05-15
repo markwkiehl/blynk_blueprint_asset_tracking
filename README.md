@@ -72,4 +72,5 @@ An [automation](https://docs.blynk.io/en/concepts/automations) can be created to
 
 ## Related Links
 [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk)<br/>
-[github.com/blynkkk/blueprints](https://github.com/blynkkk/blueprints)
+[github.com/blynkkk/blueprints](https://github.com/blynkkk/blueprints)<br/>
+[How to Control a Particle Device with Blynk](https://blynk.io/blog/how-to-control-particle-device-with-blynk)<br/>
