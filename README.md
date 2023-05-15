@@ -26,7 +26,7 @@ Query Parameters:
   "V6": "{{PARTICLE_PUBLISHED_AT}}"
 }
 
-<img src="https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/f0f8adea0b3feb23fde7f69a0fcef34bb894930d/blynk_blueprint_asset_tracking_particle_webhook(1).png"  width="500" border="10"/>
+<img src="https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/f0f8adea0b3feb23fde7f69a0fcef34bb894930d/blynk_blueprint_asset_tracking_particle_webhook(1).png"  width="700" border="5"/>
 
 ## Software
 In order to minimize cellular communication between Blynk and the device, the [Blynk HTTPs API](https://docs.blynk.io/en/blynk.cloud/https-api-overview) will be used.  The Particle Boron cellular IoT device will publish a JSON string to the Particle Cloud, referencing a Particle webhook. The webhook reformats the data, and then sends it to the Blynk Cloud via an HTTP GET, updating the Blynk datastreams.  
@@ -48,5 +48,5 @@ Note that the minimum publishing interval (shown below) in the sketch is set to 
 Save the modified sketch and then upload it to your Particle Boron.  
 
 ## Related Links
-[How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk)
+[How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk)<br/>
 [github.com/blynkkk/blueprints](https://github.com/blynkkk/blueprints)
