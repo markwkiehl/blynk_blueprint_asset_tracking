@@ -27,8 +27,6 @@ Query Parameters:
   "V6": "{{PARTICLE_PUBLISHED_AT}}"
 }
 
-<img src="https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/f0f8adea0b3feb23fde7f69a0fcef34bb894930d/blynk_blueprint_asset_tracking_particle_webhook(1).png"  width="700" border="5"/>
-
 ![alt text](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/f0f8adea0b3feb23fde7f69a0fcef34bb894930d/blynk_blueprint_asset_tracking_particle_webhook(1).png "Particle Webhook")
 
 ## Software
