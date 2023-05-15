@@ -49,7 +49,11 @@ Note that the minimum publishing interval (shown below) in the sketch is set to 
 
   const uint32_t TIMER_INTERVAL_MS = 60000;
 
-Save the modified sketch and then upload it to your Particle Boron.  
+Save the modified sketch and then upload it to your Particle Boron.  Restart your Particle Boron and allow it to connect to the Particle Cloud. 
+
+## Blynk Web Dashboard
+
+## Blynk.App
 
 ## Related Links
 [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk)<br/>
