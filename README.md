@@ -32,13 +32,12 @@ Query Parameters:
 
 ![alt text](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/f0f8adea0b3feb23fde7f69a0fcef34bb894930d/blynk_blueprint_asset_tracking_particle_webhook(1).png "Particle Webhook")
 
-## Software
-In order to minimize cellular communication between Blynk and the device, the [Blynk HTTPs API](https://docs.blynk.io/en/blynk.cloud/https-api-overview) will be used.  The Particle Boron cellular IoT device will publish a JSON string to the Particle Cloud, referencing a Particle webhook. The webhook reformats the data, and then sends it to the Blynk Cloud via an HTTP GET, updating the Blynk datastreams.  
-
+## Blueprint
 Begin by using the 'Blynk Aasset Tracking' Blueprint by navigating in the Blynk.Console to 'Templates -> BLUEPRINTS -> BLUEPRINT -> Use Blueprint'.  Choose the 'Activate first device' option.  This will generate and show a AuthToken.  Copy the AuthToken and keep it in a safe place, and then use it in the next section to update "BLYNK_AUTH_TOKEN" within the sketch  [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/38192cabe4122f59c3fe6956038b1a33c015e4b6/blynk_blueprint_asset_tracking.ino).
 
-
 ## Firmware
+Cellular communication between the hardware and Blynk will utilize the [Blynk HTTPs API](https://docs.blynk.io/en/blynk.cloud/https-api-overview) to minimize cellular data usage.  The Particle Boron cellular IoT device will publish a JSON string to the Particle Cloud, referencing a Particle webhook. The webhook reformats the data, and then sends it to the Blynk Cloud via an HTTP GET, updating the Blynk datastreams.  
+
 Open the sketch [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/38192cabe4122f59c3fe6956038b1a33c015e4b6/blynk_blueprint_asset_tracking.ino) from this repository in [Workbench](https://www.particle.io/workbench/) or other IDE.  Install the library "Adafruit_GPS" as noted in the sketch.  
 
 In the sketch, find the code snippet shown below and update "BLYNK_AUTH_TOKEN" with your AuthToken obtained from activating a device from the Blueprint. 
@@ -72,5 +71,5 @@ An [automation](https://docs.blynk.io/en/concepts/automations) can be created to
 
 ## Related Links
 [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk)<br/>
-[github.com/blynkkk/blueprints](https://github.com/blynkkk/blueprints)<br/>
 [How to Control a Particle Device with Blynk](https://blynk.io/blog/how-to-control-particle-device-with-blynk)<br/>
+[github.com/blynkkk/blueprints](https://github.com/blynkkk/blueprints)<br/>
