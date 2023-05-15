@@ -25,7 +25,7 @@ The article [How to connect a Particle device to Blynk](https://blynk.io/blog/ho
 Webhook event name:  blynk_https_get
 Full URL:  https://ny3.blynk.cloud/external/api/batch/update    (update "ny3.blynk.cloud" with your server shown in the Blynk.Console lower right.  See [here](https://docs.blynk.io/en/blynk.cloud/troubleshooting) for a list of valid server addresses).  
 
-<img src="[https://images.unsplash.com/photo-1415604934674-561df9abf539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2772&q=80](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/f0f8adea0b3feb23fde7f69a0fcef34bb894930d/blynk_blueprint_asset_tracking_particle_webhook(1).png)" width="100" height="100" border="10"/>
+<img src="https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/f0f8adea0b3feb23fde7f69a0fcef34bb894930d/blynk_blueprint_asset_tracking_particle_webhook(1).png"  width="100" height="100" border="10"/>
 
 ## Blynk
 
