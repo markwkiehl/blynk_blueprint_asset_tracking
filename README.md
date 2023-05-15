@@ -5,12 +5,15 @@ Blynk Asset Tracking Blueprint for tracking assets with [Blynk](https://blynk.io
 - Only publish location information when the GPS has a fix and the location has moved more than 122 m / 400 ft since it was powered on.
 - Track the device location and speed on a map in a web dashboard and mobile app.
 
+## Overview
+A Particle Boron with attached GPS FeatherWing reads the device location.  The location data is pushed from the Particle cellular device to the Blynk IoT platform via a Particle Webhook.  The data is then visualized on both a Blynk web dashboard and mobile app. A related detailed tutorial [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk) is available.  
+
 ## Hardware
 - [Particle Boron](https://docs.particle.io/boron/)
 - [GPS FeatherWing](https://www.adafruit.com/product/3133)
 - [External active 28 dB GPS antenna](https://www.adafruit.com/product/960) and [a SMA to uFL/u.FL/IPX/IPEX RF adapter cable](https://www.adafruit.com/product/851) are both optional, but highly recommended for the best GPS performance.
 
-The Boron and the GPS FeatherWing communicate over the Boron UART pins. Data is pushed from the Particle cellular device to the Blynk IoT platform via a Particle Webhook.  The data is then visualized on both a Blynk web dashboard and mobile app. A related detailed tutorial [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk) is available.  
+The Boron is physically stacked on top of the GPS FeatherWing, completing the connection between them.  The Boron and the GPS FeatherWing communicate over the Boron UART pins. 
 
 ## Particle Webhook
 Create a Particle Webhook to transfer the data from the Particle Boron to Blynk.  The article [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk) describes in detail how to create a Particle webhook. The datastreams in this Blueprint only include what is needed to pass on the location data, so the Particle Webhook configuration that follows is all that is needed. 
