@@ -18,8 +18,8 @@ The Boron is physically stacked on top of the GPS FeatherWing, completing the el
 ## Particle Webhook
 Create a Particle Webhook to transfer the data from the Particle Boron to Blynk. &nbsp; The article [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk) describes in detail how to create a Particle webhook. &nbsp; The datastreams in this Blueprint only include what is needed to pass on the location data, so the Particle Webhook configuration that follows is all that is needed. 
 
-Webhook event name:  blynk_https_get<br/>
-Full URL:  https://ny3.blynk.cloud/external/api/batch/update<br/>
+Webhook event name:  blynk_https_get<br/><br/>
+Full URL:  https://ny3.blynk.cloud/external/api/batch/update<br/><br/>
 (update "ny3.blynk.cloud" with your server shown in the Blynk.Console lower right.  See [here](https://docs.blynk.io/en/blynk.cloud/troubleshooting) for a list of valid server addresses).<br/>
 Query Parameters:
 {
@@ -51,7 +51,7 @@ Note that the minimum publishing interval (shown below) in the sketch is set to 
 Save the modified sketch and then upload it to your Particle Boron. &nbsp; Restart your Particle Boron and allow it to connect to the Particle Cloud. 
 
 ## Blynk Web Dashboard &amp; Blynk.App Widgets
-The **GPS position longitude/latitude coordinates** stored in the datastream V3 can be displayed with a web widget 'Label Display', but not with a Blynk.App widget. &nbsp; The position shown on a map may be displayed on the web dashboard and Blynk.App using a Map Widget.  
+The **GPS position longitude/latitude coordinates** stored in the datastream V3 can be displayed with a web widget 'Label Display', but not with a Blynk.App widget. &nbsp; The position may be displayed on a web dashboard [map widget](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/addd0f70d18b25faa00ed9e1808185d7083bd6d1/blynk_blueprint_asset_tracking_web_dashboard.png) and a Blynk.App [map widget](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/addd0f70d18b25faa00ed9e1808185d7083bd6d1/blynk_blueprint_asset_tracking_mobile_app(1).png).  
 
 The device **speed in mph** is available in the datastream V4. &nbsp; A variety of web dashboard and Blynk.App widgets can display this value, including Label Display / Value Display / Labeled Value, gauge, chart, etc. &nbsp; The speed may also be added to a web dashboard map widget as an [overlay](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/ea0df8c8faf89e76fb923c34c6448f4ae2f596af/blynk_blueprint_asset_tracking_web_dashboard(4).png), [example](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/3ef24b8f3f158d819880977aad00e9d7b7fd9a81/blynk_blueprint_asset_tracking_web_dashboard(5).png). 
 
