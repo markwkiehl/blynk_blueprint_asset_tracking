@@ -51,9 +51,23 @@ Note that the minimum publishing interval (shown below) in the sketch is set to 
 
 Save the modified sketch and then upload it to your Particle Boron.  Restart your Particle Boron and allow it to connect to the Particle Cloud. 
 
+## Blynk Web Dashboard &amp; Blynk.App Widgets
+The GPS position longitude/latitude coordinates stored in the datastream V3 can be displayed with a web widget 'Label Display', but not with a Blynk.App widget.  The position shown on a map may be displayed on the web dashboard and Blynk.App using a Map Widget.  
+
+The device speed in mph is available in the datastream V4.  A variety of web dashboard and Blynk.App widgets can display this value, including Label Display / Value Display / Labeled Value, gauge, chart, etc.  
+
+The datastream V5 named 'position_changed' V5 will be updated to a value of 1 by the hardware when it has changed by more than 122 m / 400 ft since it was powered on, or since the last time data was published (firmware variable TIMER_INTERVAL_MS).  The datastream value is not updated to a value of 0 by the hardware, so this should be done with an automation if the feature is to be used.  A variety of widgets including a LED, switch, and value display can be used to visualize the datastream value, and it may also be used in an automation to notify the user of change in value.  The hardware determines the change in position from the last published GPS coordinates.  The position delta of 122 m / 400 ft can be changed in the hardware, but note that making it smaller can cause false positive triggers if the GPS accuracy is poor.
+
+The last date/time in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) the position was last published by the hardware can be viewed by using a Label Display / Value Display web dashboard / Blynk.App widget. 
+
 ## Blynk Web Dashboard
 
 ## Blynk.App
+
+## Automation
+An [automation](https://docs.blynk.io/en/concepts/automations) can be created to notify the user when the device position has changed more than 122 m / 400 ft since it was powered on, or since the last time data was published (firmware variable TIMER_INTERVAL_MS).  See 
+
+The datastream V5 named ‘position_changed’ will be set to the value of 1 by the hardware when the position has changed. Any automation should reset the datastream to a value of 0 after it is triggered.  The hardware determines the change in position from the last published GPS coordinates.  The position delta of 122 m / 400 ft can be changed in the hardware, but note that making it smaller can cause false positive triggers if the GPS accuracy is poor.  Details on how to create an automation are in the article [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk).  
 
 ## Related Links
 [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk)<br/>
