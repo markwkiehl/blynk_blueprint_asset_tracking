@@ -4,6 +4,8 @@ Blynk Asset Tracking Blueprint for tracking assets with [Blynk](https://blynk.io
 ## Functional Requirements
 - Only publish location information when the GPS has a fix and the location has moved more than 122 m / 400 ft since it was powered on.
 - Track the device location and speed on a map in a web dashboard and mobile app.
+- Publish the device position after it boots and a GPS fix is obtained.
+- Publish the date/time in UTC when the device last published data.  
 
 ## Overview
 A Particle Boron with attached GPS FeatherWing reads the device location. &nbsp; The location data is pushed from the Particle cellular device to the Blynk IoT platform via a Particle Webhook. &nbsp; The data is then visualized on both a Blynk web dashboard and mobile app. &nbsp; A related detailed tutorial [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk) is available.  
@@ -36,7 +38,7 @@ Query Parameters:
 Use the 'Blynk Aasset Tracking' Blueprint by navigating in the Blynk.Console to 'Templates -> BLUEPRINTS -> BLUEPRINT -> Use Blueprint'. &nbsp; Choose the 'Activate first device' option. &nbsp; This will generate and show a AuthToken. &nbsp; Copy the AuthToken and keep it in a safe place, and then use it in the next section to update "BLYNK_AUTH_TOKEN" within the sketch  [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/38192cabe4122f59c3fe6956038b1a33c015e4b6/blynk_blueprint_asset_tracking.ino).
 
 ## Firmware
-Cellular communication between the hardware and Blynk will utilize the [Blynk HTTPs API](https://docs.blynk.io/en/blynk.cloud/https-api-overview) to minimize cellular data usage. &nbsp; The Particle Boron cellular IoT device will publish a JSON string to the Particle Cloud, referencing a Particle webhook. &nbsp; The webhook reformats the data, and then sends it to the Blynk Cloud via an HTTP GET, updating the Blynk datastreams.  
+Cellular communication between the hardware and Blynk will utilize the [Blynk HTTPs API](https://docs.blynk.io/en/blynk.cloud/https-api-overview) to minimize cellular data usage. &nbsp; The Blynk library is not used nor needed.  The Particle Boron cellular IoT device will publish a JSON string to the Particle Cloud, referencing a Particle webhook. &nbsp; The webhook reformats the data, and then sends it to the Blynk Cloud via an HTTP GET, updating the Blynk datastreams.  
 
 Open the sketch [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/38192cabe4122f59c3fe6956038b1a33c015e4b6/blynk_blueprint_asset_tracking.ino) from this repository in [Workbench](https://www.particle.io/workbench/) or other IDE. &nbsp; Install the library "Adafruit_GPS" as noted in the sketch.  
 
@@ -68,6 +70,9 @@ The last **date/time in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universa
 
 ## Automation
 An [automation](https://docs.blynk.io/en/concepts/automations) can be created to notify the user when the device position has changed more than 122 m / 400 ft since it was powered on, or since the last time data was published (firmware variable TIMER_INTERVAL_MS). &nbsp; See [datastream V5 'position_changed'](https://github.com/markwkiehl/blynk_blueprint_asset_tracking/tree/main#blynk-web-dashboard--blynkapp-widgets) for more details. &nbsp; Details on how to create an automation are in the article [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk).  
+
+## Troubleshooting
+The Particle Console provides information about when the device has last connected, the cellular signal strength, etc.  You can also see what data has been pushed from the device to Blynk by reviewing the Integration webhook log.  
 
 ## Related Links
 [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk)<br/>
