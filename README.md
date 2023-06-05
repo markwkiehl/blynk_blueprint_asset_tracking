@@ -3,6 +3,7 @@ Blynk Asset Tracking Blueprint for tracking assets with [Blynk](https://blynk.io
 
 ## Functional Requirements
 - Only publish location information when the GPS has a fix and the location has moved more than 122 m / 400 ft since it was powered on.
+- If the position has changed 122 m / 400 ft, set a flag for that event, make it visible to the user, and allow the user to reset it. 
 - Track the device location and speed on a map in a web dashboard and mobile app.
 - Publish the device position after the hardware boots and a GPS fix is obtained.
 - Publish the date/time in UTC when the device last published data.  
