@@ -6,6 +6,7 @@ Blynk Asset Tracking Blueprint for tracking assets with [Blynk](https://blynk.io
 - Track the device location and speed on a map in a web dashboard and mobile app.
 - Publish the device position after the hardware boots and a GPS fix is obtained.
 - Publish the date/time in UTC when the device last published data.  
+- Publish the cellular signal strength and the battery charge status. 
 
 ## Overview
 A Particle Boron with attached GPS FeatherWing reads the device location. &nbsp; The location data is pushed from the Particle cellular device to the Blynk IoT platform via a Particle Webhook. &nbsp; The data is then visualized on both a Blynk web dashboard and mobile app. &nbsp; A related detailed tutorial [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk) is available.  
