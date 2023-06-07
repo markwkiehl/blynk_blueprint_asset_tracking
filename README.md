@@ -45,7 +45,7 @@ Use the 'Blynk Aasset Tracking' Blueprint by navigating in the Blynk.Console to 
 ## Firmware
 Cellular communication between the hardware and Blynk will utilize the [Blynk HTTPs API](https://docs.blynk.io/en/blynk.cloud/https-api-overview) to minimize cellular data usage. &nbsp; The Blynk library is not used nor needed.  The Particle Boron cellular IoT device will publish a JSON string to the Particle Cloud, referencing a Particle webhook. &nbsp; The webhook reformats the data, and then sends it to the Blynk Cloud via an HTTP GET, updating the Blynk datastreams.  
 
-Open the sketch [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/38192cabe4122f59c3fe6956038b1a33c015e4b6/blynk_blueprint_asset_tracking.ino) from this repository in [Workbench](https://www.particle.io/workbench/) or other IDE. &nbsp; Install the library "Adafruit_GPS" as noted in the sketch.  
+Open the sketch [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/main/blynk_blueprint_asset_tracking.ino) from this repository in [Workbench](https://www.particle.io/workbench/) or other IDE. &nbsp; Install the library "Adafruit_GPS" as noted in the sketch.  
 
 In the sketch, find the code snippet shown below and update "BLYNK_AUTH_TOKEN" with your AuthToken obtained from activating a device from the Blueprint. 
 
@@ -58,7 +58,7 @@ Note that the minimum publishing interval (shown below) in the sketch is set to 
 Save the modified sketch and then upload it to your Particle Boron. &nbsp; Restart your Particle Boron and allow it to connect to the Particle Cloud. 
 
 ## Blynk Web Dashboard &amp; Blynk.App Widgets
-The **GPS position longitude/latitude coordinates** stored in the datastream V3 can be displayed with a web widget 'Label Display', but not with a Blynk.App widget. &nbsp; The position may be displayed on a web dashboard [map widget](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/addd0f70d18b25faa00ed9e1808185d7083bd6d1/blynk_blueprint_asset_tracking_web_dashboard.png) and a Blynk.App [map widget](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/addd0f70d18b25faa00ed9e1808185d7083bd6d1/blynk_blueprint_asset_tracking_mobile_app(1).png).  
+The **GPS position longitude/latitude coordinates** stored in the datastream V3 can be displayed with a web widget 'Label Display', but not with a Blynk.App widget. &nbsp; The position may be displayed on a web dashboard [map widget](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/c9bf8a57457cfbf7fdd5697e437be6ecae2f436f/blynk_blueprint_asset_tracking_web_dashboard.png) and a Blynk.App [map widget](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/c9bf8a57457cfbf7fdd5697e437be6ecae2f436f/blynk_blueprint_asset_tracking_mobile_app(2).png).  
 
 The device **speed in mph** is available in the datastream V4. &nbsp; A variety of web dashboard and Blynk.App widgets can display this value, including Label Display / Value Display / Labeled Value, gauge, chart, etc. &nbsp; The speed may also be added to a web dashboard map widget as an [overlay](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/ea0df8c8faf89e76fb923c34c6448f4ae2f596af/blynk_blueprint_asset_tracking_web_dashboard(4).png), [example](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/3ef24b8f3f158d819880977aad00e9d7b7fd9a81/blynk_blueprint_asset_tracking_web_dashboard(5).png). 
 
