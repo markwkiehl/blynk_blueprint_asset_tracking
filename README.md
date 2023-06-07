@@ -73,7 +73,7 @@ The datastream V12 named '**cell_quality**' is the cellular connection quality. 
 The last **date/time in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) the position was last published** by the hardware can be viewed by using a Label Display / Value Display web dashboard / Blynk.App widget. 
 
 ## Blynk Web Dashboard
-![alt text](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/6bf578d83bda4f1ea99d87ec85d57ee5115d262e/blynk_blueprint_asset_tracking_web_dashboard.png "Web Dashboard")
+![alt text](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/e49d364d912b49fbd8072db8d5a6ab1d69a2c278/blynk_blueprint_asset_tracking_web_dashboard.png "Web Dashboard")
 
 
 ## Blynk.App
