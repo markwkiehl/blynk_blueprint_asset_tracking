@@ -7,7 +7,7 @@ Blynk Asset Tracking Blueprint for tracking assets with [Blynk](https://blynk.io
 - Track the device location and speed on a map in a web dashboard and mobile app.
 - Publish the device position after the hardware boots and a GPS fix is obtained.
 - Publish the date/time in UTC when the device last published data.  
-- Publish the cellular signal strength and the battery charge status. 
+- Publish the cellular signal strength, signal quality, and the battery charge status. 
 
 ## Overview
 A Particle Boron with attached GPS FeatherWing reads the device location. &nbsp; The location data is pushed from the Particle cellular device to the Blynk IoT platform via a Particle Webhook. &nbsp; The data is then visualized on both a Blynk web dashboard and mobile app. &nbsp; A related detailed tutorial [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk) is available.  
@@ -31,7 +31,10 @@ Query Parameters:
   "V3": "{{lon}},{{lat}}",
   "V4": "{{spd}}",
   "V5": "{{moved}}",
-  "V6": "{{PARTICLE_PUBLISHED_AT}}"
+  "V6": "{{PARTICLE_PUBLISHED_AT}}",
+  "V10": "{{v10}}",
+  "V11": "{{v11}}",
+  "V12": "{{v12}}"
 }
 
 ![alt text](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/f0f8adea0b3feb23fde7f69a0fcef34bb894930d/blynk_blueprint_asset_tracking_particle_webhook(1).png "Particle Webhook")
@@ -59,7 +62,13 @@ The **GPS position longitude/latitude coordinates** stored in the datastream V3 
 
 The device **speed in mph** is available in the datastream V4. &nbsp; A variety of web dashboard and Blynk.App widgets can display this value, including Label Display / Value Display / Labeled Value, gauge, chart, etc. &nbsp; The speed may also be added to a web dashboard map widget as an [overlay](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/ea0df8c8faf89e76fb923c34c6448f4ae2f596af/blynk_blueprint_asset_tracking_web_dashboard(4).png), [example](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/3ef24b8f3f158d819880977aad00e9d7b7fd9a81/blynk_blueprint_asset_tracking_web_dashboard(5).png). 
 
-The datastream V5 named '**position_changed**' V5 will be updated to a value of 1 by the hardware when it has changed by more than 122 m / 400 ft since it was powered on, or since the last time data was published (firmware variable TIMER_INTERVAL_MS). &nbsp; The datastream value is not updated to a value of 0 by the hardware, so this should be done with an [automation](https://docs.blynk.io/en/concepts/automations) if the feature is to be used. &nbsp; A variety of widgets including a LED, switch, and value display can be used to visualize the datastream value, and it may also be used in an [automation](https://github.com/markwkiehl/blynk_blueprint_asset_tracking/tree/main#automation) to notify the user of change in value. &nbsp; The hardware determines the change in position from the last published GPS coordinates. &nbsp; The position delta of 122 m / 400 ft can be changed in the hardware, but note that making it smaller can cause false positive triggers if the GPS accuracy is poor.
+The datastream V5 named '**position_changed**' will be updated to a value of 1 by the hardware when it has changed by more than 122 m / 400 ft since it was powered on, or since the last time data was published (firmware variable TIMER_INTERVAL_MS). &nbsp; The datastream value is not updated to a value of 0 by the hardware, so this should be done with an [automation](https://docs.blynk.io/en/concepts/automations) if the feature is to be used. &nbsp; A variety of widgets including a LED, switch, and value display can be used to visualize the datastream value, and it may also be used in an [automation](https://github.com/markwkiehl/blynk_blueprint_asset_tracking/tree/main#automation) to notify the user of change in value. &nbsp; The hardware determines the change in position from the last published GPS coordinates. &nbsp; The position delta of 122 m / 400 ft can be changed in the hardware, but note that making it smaller can cause false positive triggers if the GPS accuracy is poor.
+
+The datastream V10 named '**batt_charge**' is the battery charge.  It is "no battery" when no battery is connected, otherwise 0.0 to 100.0 where a larger value is better. 
+
+The datastream V11 named '**cell_strength**' is the cellular connection strength.  It is -1 when the value is unknown, otherwise 0.0 to 100.0 where a larger value is better. 
+
+The datastream V12 named '**cell_quality**' is the cellular connection quality.  It is -1 when the value is unknown, otherwise 0.0 to 100.0 where a larger value is better. 
 
 The last **date/time in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) the position was last published** by the hardware can be viewed by using a Label Display / Value Display web dashboard / Blynk.App widget. 
 
