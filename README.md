@@ -64,11 +64,11 @@ The device **speed in mph** is available in the datastream V4. &nbsp; A variety 
 
 The datastream V5 named '**position_changed**' will be updated to a value of 1 by the hardware when it has changed by more than 122 m / 400 ft since it was powered on, or since the last time data was published (firmware variable TIMER_INTERVAL_MS). &nbsp; The datastream value is not updated to a value of 0 by the hardware, so this should be done with an [automation](https://docs.blynk.io/en/concepts/automations) if the feature is to be used. &nbsp; A variety of widgets including a LED, switch, and value display can be used to visualize the datastream value, and it may also be used in an [automation](https://github.com/markwkiehl/blynk_blueprint_asset_tracking/tree/main#automation) to notify the user of change in value. &nbsp; The hardware determines the change in position from the last published GPS coordinates. &nbsp; The position delta of 122 m / 400 ft can be changed in the hardware, but note that making it smaller can cause false positive triggers if the GPS accuracy is poor.
 
-The datastream V10 named '**batt_charge**' is the battery charge.  It is "no battery" when no battery is connected, otherwise 0.0 to 100.0 where a larger value is better. 
+The datastream V10 named '**batt_charge**' is the battery charge.  It will show "no battery" when no battery is connected, otherwise 0.0 to 100.0 where a larger value is better. 
 
-The datastream V11 named '**cell_strength**' is the cellular connection strength.  It is -1 when the value is unknown, otherwise 0.0 to 100.0 where a larger value is better. 
+The datastream V11 named '**cell_strength**' is the cellular connection strength.  It is "N/A" when the value is unknown, otherwise 0.0 to 100.0 where a larger value is better. 
 
-The datastream V12 named '**cell_quality**' is the cellular connection quality.  It is -1 when the value is unknown, otherwise 0.0 to 100.0 where a larger value is better. 
+The datastream V12 named '**cell_quality**' is the cellular connection quality.  It is "N/A" when the value is unknown, otherwise 0.0 to 100.0 where a larger value is better. 
 
 The last **date/time in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) the position was last published** by the hardware can be viewed by using a Label Display / Value Display web dashboard / Blynk.App widget. 
 
