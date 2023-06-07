@@ -163,17 +163,20 @@ void publishTimer() {
     } // GPS.Fix
 
     if (publish_to_blynk == true) {
-      String batt_chg;
-      if (batt_charge < 0.0) {
-        batt_chg = "no battery";
-      } else {
-        batt_chg = String(batt_charge,1);
+      String batt_chg = "no battery";
+      if (batt_charge >= 0.0) {
+         batt_chg = String(batt_charge,1);
       }
-      String cell_str = String(cell_sig_strength,1);
-      String cell_qual = String(cell_sig_quality,1);
+      String cell_str = "N/A";
+      if (cell_sig_strength >= 0.0) {
+         cell_str = String(cell_sig_strength,1);
+      }
+      String cell_qual = "N/A";
+      if (cell_sig_quality >= 0.0) {
+         cell_qual = String(cell_sig_quality,1);
+      }
       char data[130]; // See serial output for the actual size in bytes and adjust accordingly.
       // Note the escaped double quotes around the value for BLYNK_AUTH_TOKEN.  
-      //snprintf(data, sizeof(data), "{\"t\":\"%s\",\"lat\":%f,\"lon\":%f,\"spd\":%f,\"moved\":%u}", BLYNK_AUTH_TOKEN, lat, lon, mph, loc);
       snprintf(data, sizeof(data), "{\"t\":\"%s\",\"lat\":%f,\"lon\":%f,\"spd\":%f,\"moved\":%u,\"v10\":%s,\"v11\":%s,\"v12\":%s}", BLYNK_AUTH_TOKEN, lat, lon, mph, loc, batt_chg, cell_str, cell_qual);
       Serial.printlnf("Sending to Blynk: '%s' with size of %u bytes", data, strlen(data));
       bool pub_result = Particle.publish("blynk_https_get", data, PRIVATE);
