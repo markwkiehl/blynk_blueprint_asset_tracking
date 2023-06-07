@@ -45,7 +45,7 @@ Use the 'Blynk Aasset Tracking' Blueprint by navigating in the Blynk.Console to 
 ## Firmware
 Cellular communication between the hardware and Blynk will utilize the [Blynk HTTPs API](https://docs.blynk.io/en/blynk.cloud/https-api-overview) to minimize cellular data usage. &nbsp; The Blynk library is not used nor needed.  The Particle Boron cellular IoT device will publish a JSON string to the Particle Cloud, referencing a Particle webhook. &nbsp; The webhook reformats the data, and then sends it to the Blynk Cloud via an HTTP GET, updating the Blynk datastreams.  
 
-Open the sketch [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/main/blynk_blueprint_asset_tracking.ino) from this repository in [Workbench](https://www.particle.io/workbench/) or other IDE. &nbsp; Install the library "Adafruit_GPS" as noted in the sketch.  
+Open the sketch [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/38192cabe4122f59c3fe6956038b1a33c015e4b6/blynk_blueprint_asset_tracking.ino) from this repository in [Workbench](https://www.particle.io/workbench/) or other IDE. &nbsp; Install the library "Adafruit_GPS" as noted in the sketch.  
 
 In the sketch, find the code snippet shown below and update "BLYNK_AUTH_TOKEN" with your AuthToken obtained from activating a device from the Blueprint. 
 
@@ -77,7 +77,7 @@ The last **date/time in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universa
 
 
 ## Blynk.App
-![alt text](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/d7dfaacd1d1f15df0ec53b3d39941914bfe0e007/blynk_blueprint_asset_tracking_mobile_app(1).png "Blynk.App")
+![alt text](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/b50557c68d24fac4bd62cea8ab195dd4d4be56a9/blynk_blueprint_asset_tracking_mobile_app(2).png "Blynk.App")
 
 ## Automation
 An [automation](https://docs.blynk.io/en/concepts/automations) can be created to notify the user when the device position has changed more than 122 m / 400 ft since it was powered on, or since the last time data was published (firmware variable TIMER_INTERVAL_MS). &nbsp; See [datastream V5 'position_changed'](https://github.com/markwkiehl/blynk_blueprint_asset_tracking/tree/main#blynk-web-dashboard--blynkapp-widgets) for more details. &nbsp; Details on how to create an automation are in the article [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk).  
