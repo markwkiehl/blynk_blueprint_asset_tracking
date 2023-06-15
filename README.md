@@ -14,7 +14,7 @@ A Particle Boron with attached GPS FeatherWing reads the device location. &nbsp;
 
 ## Hardware
 - [Particle Boron](https://docs.particle.io/boron/)
-- [GPS FeatherWing](https://www.adafruit.com/product/3133)
+- [GPS FeatherWing](https://www.adafruit.com/product/3133) for Boron, or for other Particle devices without GPS (Tracker) the [Adafruit Ultimate GPS module using MTK33x9 chipset](Adafruit Ultimate GPS GNSS with USB - 99 channel w/10 Hz updates), the [Adafruit Ultimate GPS Breakout - 66 channel w/10 Hz updates - PA1616S](https://www.adafruit.com/product/746), and the GPS chip(s) sold individually. &nbsp; All GPS devices utilize the [Adafruit GPS Library](https://github.com/adafruit/Adafruit-GPS-Library). &nbsp;
 - [External active 28 dB GPS antenna](https://www.adafruit.com/product/960) and [a SMA to uFL/u.FL/IPX/IPEX RF adapter cable](https://www.adafruit.com/product/851) are both optional, but highly recommended for the best GPS performance.
 
 The Boron is physically stacked on top of the GPS FeatherWing, completing the electrical connection between them. &nbsp; The Boron and the GPS FeatherWing communicate over the Boron UART pins. 
@@ -63,7 +63,7 @@ Use the 'Blynk Aasset Tracking' Blueprint by navigating in the Blynk.Console to 
 ## Firmware
 Cellular communication between the hardware and Blynk will utilize the [Blynk HTTPs API](https://docs.blynk.io/en/blynk.cloud/https-api-overview) to minimize cellular data usage. &nbsp; The Blynk library is not used nor needed.  The Particle Boron cellular IoT device will publish a JSON string to the Particle Cloud, referencing a Particle webhook. &nbsp; The webhook reformats the data, and then sends it to the Blynk Cloud via an HTTP GET, updating the Blynk datastreams.  
 
-Open the sketch [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/705f4a11bb6a908dc02d608ab2219f77a8baf27c/blynk_blueprint_asset_tracking.ino) from this repository in [Workbench](https://www.particle.io/workbench/) or other IDE. &nbsp; Install the library "Adafruit_GPS" as noted in the sketch.  
+Open the sketch [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/705f4a11bb6a908dc02d608ab2219f77a8baf27c/blynk_blueprint_asset_tracking.ino) from this repository in [Workbench](https://www.particle.io/workbench/) or other IDE. &nbsp; Install the library "[Adafruit_GPS](https://github.com/adafruit/Adafruit-GPS-Library)" as noted in the sketch.  &nbsp; The [Adafruit_GPS](https://github.com/adafruit/Adafruit-GPS-Library) is compatable with the [Ultimate GPS FeatherWing](https://www.adafruit.com/product/3133), the [Adafruit Ultimate GPS module using MTK33x9 chipset](Adafruit Ultimate GPS GNSS with USB - 99 channel w/10 Hz updates), the [Adafruit Ultimate GPS Breakout - 66 channel w/10 Hz updates - PA1616S](https://www.adafruit.com/product/746), and the GPS chip(s) sold individually. 
 
 In the sketch, find the code snippet shown below and update "BLYNK_AUTH_TOKEN" with your AuthToken obtained from activating a device from the Blueprint. 
 
@@ -103,6 +103,7 @@ An [automation](https://docs.blynk.io/en/concepts/automations) can be created to
 ## Troubleshooting
 After the device has started (boot), approximately 10 seconds after it connects to the Particle cloud the cellular connection status is acquired and that along with the battery charge is transmitted. 
 Every TIMER_INTERVAL_MS (5 min default) the device will check if a GPS fix is obtained, and if the GPS has a fix then all of the data will be published. This is implemented to prevent the sending of incorrect position values, and to prevent a false positive for position_changed (datastream V5).  
+
 The Particle Console provides information about when the device has last connected, the cellular signal strength, etc.  You can also see what data has been pushed from the device to Blynk by reviewing the Particle Integration webhook log.  
 
 ## Related Links
