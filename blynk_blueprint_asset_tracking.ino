@@ -24,12 +24,13 @@
 
 #include "Particle.h"
 
-const char* firmware_version = "0.0.0";
+const char* firmware_version = "0.0.1";
 boolean just_started = true;
 
 /////////////////////////////////////////////////////////////////////////
 
 uint8_t just_booted = 1;
+uint8_t boot_status_published = 0;
 
 const uint16_t TIMER_INTERVAL_CELL_BAT_MS = 10000;
 uint32_t timer_last_cell_batt_check_ms = 0;
@@ -66,6 +67,18 @@ void CellBattUpdate() {
       cell_sig_quality = Cellular.RSSI().getQuality();
       Serial.printlnf("\nCellular signal strength: %.02f%%", cell_sig_strength);
       Serial.printlnf("Cellular signal quality: %.02f%%", cell_sig_quality);
+	  if (boot_status_published == 0) {
+		  char data[100]; // See serial output for the actual size in bytes and adjust accordingly.
+		  // Note the escaped double quotes around the value for BLYNK_AUTH_TOKEN.  
+		  snprintf(data, sizeof(data), "{\"t\":\"%s\",\"v10\":%s,\"v11\":%s,\"v12\":%s}", BLYNK_AUTH_TOKEN, batt_chg, cell_str, cell_qual);
+		  Serial.printlnf("Sending to Blynk: '%s' with size of %u bytes", data, strlen(data));
+		  bool pub_result = Particle.publish("blynk_https_get_boot", data, PRIVATE);
+		  if (pub_result) {
+			boot_status_published = 1;
+		  } else {
+			Serial.println("ERROR: Particle.publish()");
+		  }
+	  }
       particle_connected_wait_ms = millis();
     } // particle_connected_wait_ms
 
