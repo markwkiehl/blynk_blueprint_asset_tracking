@@ -99,7 +99,8 @@ void CellBattUpdate() {
 /////////////////////////////////////////////////////////////////////////
 // Blynk
 
-#define BLYNK_AUTH_TOKEN "1eA_c-M3KDeJOq9sVusy-HQlnKFjEmGt"
+// Update below with your Blynk auth token for your device 
+#define BLYNK_AUTH_TOKEN "your Blynk 32 char auth token"
 
 ////////////////////////////////////////////////////////////////
 // Adafruit GPS FeatherWing
