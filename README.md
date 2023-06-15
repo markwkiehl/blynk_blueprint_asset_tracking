@@ -2,12 +2,12 @@
 Blynk Asset Tracking Blueprint for tracking assets with [Blynk](https://blynk.io) and a [Particle Boron](https://docs.particle.io/boron/) IoT device.  
 
 ## Functional Requirements
+- Publish the cellular signal strength, signal quality, and the battery charge status as soon as possible after the device starts (boot), and thereafter along with the position information. 
 - Only publish location information when the GPS has a fix, and the specified publish interval TIMER_INTERVAL_MS (5 min default) has elapsed.
 - If the position has changed 122 m / 400 ft, set a flag for that event, make it visible to the user, and allow the user to reset it. 
 - Track the device location and speed on a map in a web dashboard and mobile app.
 - Publish the device position after the hardware boots and a GPS fix is obtained.
 - Publish the date/time in UTC when the device last published data.  
-- Publish the cellular signal strength, signal quality, and the battery charge status. 
 
 ## Overview
 A Particle Boron with attached GPS FeatherWing reads the device location. &nbsp; The location data is pushed from the Particle cellular device to the Blynk IoT platform via a Particle Webhook. &nbsp; The data is then visualized on both a Blynk web dashboard and mobile app. &nbsp; A related detailed tutorial [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk) is available.  
@@ -20,7 +20,25 @@ A Particle Boron with attached GPS FeatherWing reads the device location. &nbsp;
 The Boron is physically stacked on top of the GPS FeatherWing, completing the electrical connection between them. &nbsp; The Boron and the GPS FeatherWing communicate over the Boron UART pins. 
 
 ## Particle Webhook
-Create a Particle Webhook to transfer the data from the Particle Boron to Blynk. &nbsp; The article [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk) describes in detail how to create a Particle webhook. &nbsp; The datastreams in this Blueprint only include what is needed to pass on the location data, so the Particle Webhook configuration that follows is all that is needed. 
+Create a Particle Webhook to transfer the data from the Particle Boron to Blynk. &nbsp; 
+Two webhooks are required, one with 'event name' of 'blynk_https_get_boot' is called when the hardware initially starts and only publishes the cellular connection and battery status information. &nbsp;  The second webhook with 'event name' of 'blynk_https_get' is called every TIMER_INTERVAL_MS (5 min default) and includes all of the data.  
+
+The article [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk) describes in detail how to create a Particle webhook. &nbsp; The datastreams in this Blueprint only include what is needed to pass on the location data, so the Particle Webhook configuration that follows is all that is needed. 
+
+Webhook event name:  blynk_https_get_boot<br/><br/>
+Full URL:  https://ny3.blynk.cloud/external/api/batch/update<br/><br/>
+(update "ny3.blynk.cloud" with your server shown in the Blynk.Console lower right.  See [here](https://docs.blynk.io/en/blynk.cloud/troubleshooting) for a list of valid server addresses).<br/>
+Query Parameters:
+{
+  "token": "{{t}}",
+  "V6": "{{PARTICLE_PUBLISHED_AT}}",
+  "V10": "{{v10}}",
+  "V11": "{{v11}}",
+  "V12": "{{v12}}"
+}
+
+![alt text](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/f7dcb57437c696e63607d6f611f631cc4b67dc35/blynk_blueprint_asset_tracking_particle_webhook_No2(1).png "Particle Webhook #1")
+
 
 Webhook event name:  blynk_https_get<br/><br/>
 Full URL:  https://ny3.blynk.cloud/external/api/batch/update<br/><br/>
@@ -37,7 +55,7 @@ Query Parameters:
   "V12": "{{v12}}"
 }
 
-![alt text](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/1b207282e125cf8f9209113834738008715f28d7/blynk_blueprint_asset_tracking_particle_webhook.png "Particle Webhook")
+![alt text](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/1b207282e125cf8f9209113834738008715f28d7/blynk_blueprint_asset_tracking_particle_webhook.png "Particle Webhook #2")
 
 ## Blueprint
 Use the 'Blynk Aasset Tracking' Blueprint by navigating in the Blynk.Console to 'Templates -> BLUEPRINTS -> BLUEPRINT -> Use Blueprint'. &nbsp; Choose the 'Activate first device' option. &nbsp; This will generate and show a AuthToken. &nbsp; Copy the AuthToken and keep it in a safe place, and then use it in the next section to update "BLYNK_AUTH_TOKEN" within the sketch  [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/main/blynk_blueprint_asset_tracking.ino).
@@ -83,7 +101,7 @@ The last **date/time in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universa
 An [automation](https://docs.blynk.io/en/concepts/automations) can be created to notify the user when the device position has changed more than 122 m / 400 ft since it was powered on, or since the last time data was published (firmware variable TIMER_INTERVAL_MS). &nbsp; See [datastream V5 'position_changed'](https://github.com/markwkiehl/blynk_blueprint_asset_tracking/tree/main#blynk-web-dashboard--blynkapp-widgets) for more details. &nbsp; Details on how to create an automation are in the article [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk).  
 
 ## Troubleshooting
-The earliest the device will publish data after the hardware has started (boot) is TIMER_INTERVAL_MS (5 min default).  
+After the device has started (boot), approximately 10 seconds after it connects to the Particle cloud the cellular connection status is acquired and that along with the battery charge is transmitted. 
 Every TIMER_INTERVAL_MS (5 min default) the device will check if a GPS fix is obtained, and if the GPS has a fix then all of the data will be published. This is implemented to prevent the sending of incorrect position values, and to prevent a false positive for position_changed (datastream V5).  
 The Particle Console provides information about when the device has last connected, the cellular signal strength, etc.  You can also see what data has been pushed from the device to Blynk by reviewing the Particle Integration webhook log.  
 
