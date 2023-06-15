@@ -2,7 +2,7 @@
 Blynk Asset Tracking Blueprint for tracking assets with [Blynk](https://blynk.io) and a [Particle Boron](https://docs.particle.io/boron/) IoT device.  
 
 ## Functional Requirements
-- Only publish location information when the GPS has a fix and the location has moved more than 122 m / 400 ft since it was powered on.
+- Only publish location information when the GPS has a fix, and the specified publish interval TIMER_INTERVAL_MS (5 min default) has elapsed.
 - If the position has changed 122 m / 400 ft, set a flag for that event, make it visible to the user, and allow the user to reset it. 
 - Track the device location and speed on a map in a web dashboard and mobile app.
 - Publish the device position after the hardware boots and a GPS fix is obtained.
