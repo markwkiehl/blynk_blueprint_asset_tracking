@@ -58,12 +58,12 @@ Query Parameters:
 ![alt text](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/1b207282e125cf8f9209113834738008715f28d7/blynk_blueprint_asset_tracking_particle_webhook.png "Particle Webhook #2")
 
 ## Blueprint
-Use the 'Blynk Aasset Tracking' Blueprint by navigating in the Blynk.Console to 'Templates -> BLUEPRINTS -> BLUEPRINT -> Use Blueprint'. &nbsp; Choose the 'Activate first device' option. &nbsp; This will generate and show a AuthToken. &nbsp; Copy the AuthToken and keep it in a safe place, and then use it in the next section to update "BLYNK_AUTH_TOKEN" within the sketch  [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/main/blynk_blueprint_asset_tracking.ino).
+Use the 'Blynk Aasset Tracking' Blueprint by navigating in the Blynk.Console to 'Templates -> BLUEPRINTS -> BLUEPRINT -> Use Blueprint'. &nbsp; Choose the 'Activate first device' option. &nbsp; This will generate and show a AuthToken. &nbsp; Copy the AuthToken and keep it in a safe place, and then use it in the next section to update "BLYNK_AUTH_TOKEN" within the sketch  [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/705f4a11bb6a908dc02d608ab2219f77a8baf27c/blynk_blueprint_asset_tracking.ino).
 
 ## Firmware
 Cellular communication between the hardware and Blynk will utilize the [Blynk HTTPs API](https://docs.blynk.io/en/blynk.cloud/https-api-overview) to minimize cellular data usage. &nbsp; The Blynk library is not used nor needed.  The Particle Boron cellular IoT device will publish a JSON string to the Particle Cloud, referencing a Particle webhook. &nbsp; The webhook reformats the data, and then sends it to the Blynk Cloud via an HTTP GET, updating the Blynk datastreams.  
 
-Open the sketch [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/main/blynk_blueprint_asset_tracking.ino) from this repository in [Workbench](https://www.particle.io/workbench/) or other IDE. &nbsp; Install the library "Adafruit_GPS" as noted in the sketch.  
+Open the sketch [blynk_blueprint_asset_tracking.ino](https://raw.githubusercontent.com/markwkiehl/blynk_blueprint_asset_tracking/705f4a11bb6a908dc02d608ab2219f77a8baf27c/blynk_blueprint_asset_tracking.ino) from this repository in [Workbench](https://www.particle.io/workbench/) or other IDE. &nbsp; Install the library "Adafruit_GPS" as noted in the sketch.  
 
 In the sketch, find the code snippet shown below and update "BLYNK_AUTH_TOKEN" with your AuthToken obtained from activating a device from the Blueprint. 
 
