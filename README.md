@@ -83,6 +83,8 @@ The last **date/time in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universa
 An [automation](https://docs.blynk.io/en/concepts/automations) can be created to notify the user when the device position has changed more than 122 m / 400 ft since it was powered on, or since the last time data was published (firmware variable TIMER_INTERVAL_MS). &nbsp; See [datastream V5 'position_changed'](https://github.com/markwkiehl/blynk_blueprint_asset_tracking/tree/main#blynk-web-dashboard--blynkapp-widgets) for more details. &nbsp; Details on how to create an automation are in the article [How to connect a Particle device to Blynk](https://blynk.io/blog/how-to-connect-a-particle-device-to-blynk).  
 
 ## Troubleshooting
+The earliest the device will publish data after the hardware has started (boot) is TIMER_INTERVAL_MS (5 min default).  
+Every TIMER_INTERVAL_MS (5 min default) the device will check if a GPS fix is obtained, and if the GPS has a fix then all of the data will be published. This is implemented to prevent the sending of incorrect position values, and to prevent a false positive for position_changed (datastream V5).  
 The Particle Console provides information about when the device has last connected, the cellular signal strength, etc.  You can also see what data has been pushed from the device to Blynk by reviewing the Particle Integration webhook log.  
 
 ## Related Links
